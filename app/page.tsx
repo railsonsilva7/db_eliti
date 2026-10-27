@@ -2,6 +2,8 @@ import { db } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { RowDataPacket } from "mysql2";
 
+export const dynamic = "force-dynamic";
+
 interface Aluno extends RowDataPacket {
   id: number;
   nome: string;
