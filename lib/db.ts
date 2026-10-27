@@ -1,18 +1,15 @@
 import mysql from "mysql2/promise";
 
-const globalForDb = globalThis as unknown as {
-  pool: mysql.Pool | undefined;
+export const db = {
+  async query<T extends mysql.RowDataPacket[]>(sql: string, values?: unknown[]) {
+    const connection = await mysql.createConnection({
+      uri: process.env.DATABASE_URL,
+      disableEval: true,
+    });
+    try {
+      return await connection.query<T>(sql, values);
+    } finally {
+      await connection.end();
+    }
+  },
 };
-
-export const db =
-  globalForDb.pool ??
-  mysql.createPool({
-    uri: process.env.DATABASE_URL,
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0,
-  });
-
-if (process.env.NODE_ENV !== "production") {
-  globalForDb.pool = db;
-}
