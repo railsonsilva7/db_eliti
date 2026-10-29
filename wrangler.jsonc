@@ -1,11 +1,19 @@
 {
-  "main": ".open-next/worker.js",
-  "name": "db-eliti",
-  "compatibility_date": "2025-03-25",
-  "compatibility_flags": ["nodejs_compat"],
-  "keep_vars": true,
-  "assets": {
-    "directory": ".open-next/assets",
-    "binding": "ASSETS"
-  }
+	"main": ".open-next/worker.js",
+	"name": "db-eliti",
+	"compatibility_date": "2025-03-25",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"keep_vars": true,
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS"
+	},
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "97274e7143854de4a0fc1c0a84d0c13b"
+		}
+	]
 }
